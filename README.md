@@ -34,9 +34,9 @@ Navigate to the directory where you downloaded or cloned RaspiWiFi
 
 Run:
 
-```bash
+`bash
 sudo python3 initial_setup.py
-```
+`
 
 This script will install all necessary prerequisites and copy all necessary
 config and library files, then reboot. When it finishes booting it should
