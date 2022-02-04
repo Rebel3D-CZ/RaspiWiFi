@@ -28,7 +28,7 @@ def index():
 
 @app.route("/<path:path>")
 def catch_all(path):
-    return redirect("http://10.0.0.1/", code=302)
+    return redirect("http://10.0.0.1:8000/", code=302)
 
 @app.route('/manual_ssid_entry')
 def manual_ssid_entry():
