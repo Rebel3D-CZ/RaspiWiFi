@@ -38,7 +38,7 @@ def copy_configs(wpa_enabled_choice):
 	os.system('mv /usr/lib/raspiwifi/reset_device/static_files/raspiwifi.conf /etc/raspiwifi')
 	os.system('touch /etc/raspiwifi/host_mode')
 
-def update_main_config_file(entered_ssid, auto_config_choice, auto_config_delay, ssl_enabled_choice, server_port_choice, wpa_enabled_choice, wpa_entered_key):
+def update_main_config_file(entered_ssid, auto_config_choice, auto_config_delay, auto_config_after_boot, ssl_enabled_choice, server_port_choice, wpa_enabled_choice, wpa_entered_key):
 	if entered_ssid != "":
 		os.system('sed -i \'s/RR400M/' + entered_ssid + '/\' /etc/raspiwifi/raspiwifi.conf')
 	if wpa_enabled_choice.lower() == "y":
@@ -48,6 +48,8 @@ def update_main_config_file(entered_ssid, auto_config_choice, auto_config_delay,
 		os.system('sed -i \'s/auto_config=0/auto_config=1/\' /etc/raspiwifi/raspiwifi.conf')
 	if auto_config_delay != "":
 		os.system('sed -i \'s/auto_config_delay=30/auto_config_delay=' + auto_config_delay + '/\' /etc/raspiwifi/raspiwifi.conf')
+	if auto_config_after_boot != "":
+		os.system('sed -i \'s/auto_config_after_boot=0/auto_config_after_boot=' + auto_config_after_boot + '/\' /etc/raspiwifi/raspiwifi.conf')
 	if ssl_enabled_choice.lower() == "y":
 		os.system('sed -i \'s/ssl_enabled=0/ssl_enabled=1/\' /etc/raspiwifi/raspiwifi.conf')
 	if server_port_choice != "":

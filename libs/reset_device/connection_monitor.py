@@ -1,11 +1,15 @@
 import time
 import sys
 import os
+import psutil
 import reset_lib
 
 no_conn_counter = 0
 consecutive_active_reports = 0
 config_hash = reset_lib.config_file_hash()
+
+def seconds_since_boot():
+    return time.time() - psutil.boot_time()
 
 # If auto_config is set to 0 in /etc/raspiwifi/raspiwifi.conf exit this script
 if config_hash['auto_config'] == "0":
@@ -35,5 +39,5 @@ else:
         # If the number of seconds not associated with an AP is greater or
         # equal to the auto_config_delay specified in the /etc/raspiwifi/raspiwifi.conf
         # trigger a reset into AP Host (Configuration) mode.
-        if no_conn_counter >= int(config_hash['auto_config_delay']):
+        if no_conn_counter >= int(config_hash['auto_config_delay']) and (int(config_hash['auto_config_after_boot']) == 0 or seconds_since_boot() < int(config_hash['auto_config_after_boot'])):
             reset_lib.reset_to_host_mode()

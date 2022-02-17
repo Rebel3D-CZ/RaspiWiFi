@@ -25,6 +25,8 @@ auto_config_choice = input("Would you like to enable \nauto-reconfiguration mode
 print()
 auto_config_delay = input("How long of a delay would you like without an active connection \nbefore auto-reconfiguration triggers (seconds)? [default: 30]: ")
 print()
+auto_config_after_boot = input("How long after reboot is auto-reconfiguration able to restart the host (seconds)?\n0 means feature is off [default: 0]: ")
+print()
 server_port_choice = input("Which port would you like to use for the Configuration Page? [default: 8000]: ")
 print()
 ssl_enabled_choice = input("Would you like to enable SSL during configuration mode \n(NOTICE: you will get a certificate ID error \nwhen connecting, but traffic will be encrypted) [y/N]?: ")
@@ -36,7 +38,7 @@ install_ans = input("Are you ready to commit changes to the system? [y/N]: ")
 if(install_ans.lower() == 'y'):
 	setup_lib.install_prereqs()
 	setup_lib.copy_configs(wpa_enabled_choice)
-	setup_lib.update_main_config_file(entered_ssid, auto_config_choice, auto_config_delay, ssl_enabled_choice, server_port_choice, wpa_enabled_choice, wpa_entered_key)
+	setup_lib.update_main_config_file(entered_ssid, auto_config_choice, auto_config_delay, auto_config_after_boot, ssl_enabled_choice, server_port_choice, wpa_enabled_choice, wpa_entered_key)
 else:
 	print()
 	print()
