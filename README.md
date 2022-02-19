@@ -66,18 +66,23 @@ You will be prompted to set a few variables during the Initial Setup script:
       will check for an active connection while in normal operation mode (Client Mode).
       If an active connection has been determined to be lost, the Pi will reboot
       back into Configuration Mode (Host Mode) automatically.
-4. **"Auto-Config delay"** [default: 300 seconds]: This is the time in consecutive
+4. **"Auto-Config delay"** [default: 15 seconds]: This is the time in consecutive
       seconds to wait with an inactive connection before triggering a reset into
       Configuration Mode (Host Mode). This is only applicable if the
       "Auto-Config mode" mentioned above is set to active.
-5. **"Server port"** [default: 80]: This is the server port that the web server
+5. **"Auto-Config after boot"** [default: 60 seconds]: This is the time in seconds
+      since boot after which is auto-config disabled.
+      This is ment to protect any running tasks before unexpected reboots when WiFi is lost.
+      This is only applicable if the "Auto-Config mode" mentioned above is set to active.
+      The value should be at least by 30s bigger than Auto-config delay.
+6. **"Server port"** [default: 80]: This is the server port that the web server
       hosting the Configuration App page will be listening on. If you change
       this port make sure to add it to the end of the address when you're
       connecting to it. For example, if you speficiy 12345 as the port number
       you would navigate to the page like this: http://10.0.0.1:12345 If you
       leave the port at the default setting [80] there is no need to specify the
       port when navigating to the page.
-6. **"SSL Mode"** [default: n]: With this option enabled your RaspiWifi
+7. **"SSL Mode"** [default: n]: With this option enabled your RaspiWifi
       configuration page will be sent over an SSL encrypted connection (don't
       forget the "s" when navigating to https://10.0.0.1:9191 when using
       this mode). You will get a certificate error from your web browser when
