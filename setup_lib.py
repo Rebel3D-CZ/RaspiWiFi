@@ -47,9 +47,9 @@ def update_main_config_file(entered_ssid, auto_config_choice, auto_config_delay,
 	if auto_config_choice.lower() == "y":
 		os.system('sed -i \'s/auto_config=0/auto_config=1/\' /etc/raspiwifi/raspiwifi.conf')
 	if auto_config_delay != "":
-		os.system('sed -i \'s/auto_config_delay=30/auto_config_delay=' + auto_config_delay + '/\' /etc/raspiwifi/raspiwifi.conf')
+		os.system('sed -i \'s/auto_config_delay=15/auto_config_delay=' + auto_config_delay + '/\' /etc/raspiwifi/raspiwifi.conf')
 	if auto_config_after_boot != "":
-		os.system('sed -i \'s/auto_config_after_boot=0/auto_config_after_boot=' + auto_config_after_boot + '/\' /etc/raspiwifi/raspiwifi.conf')
+		os.system('sed -i \'s/auto_config_after_boot=60/auto_config_after_boot=' + auto_config_after_boot + '/\' /etc/raspiwifi/raspiwifi.conf')
 	if ssl_enabled_choice.lower() == "y":
 		os.system('sed -i \'s/ssl_enabled=0/ssl_enabled=1/\' /etc/raspiwifi/raspiwifi.conf')
 	if server_port_choice != "":
