@@ -4,7 +4,7 @@ def install_prereqs():
 	os.system('clear')
 	os.system('apt update')
 	os.system('clear')
-	os.system('apt install python3 python3-rpi.gpio python3-pip dnsmasq hostapd -y')
+	os.system('apt install python3 python3-rpi.gpio python3-pip python3-psutils dnsmasq hostapd -y')
 	os.system('clear')
 	print("Installing PyYAML...")
 	print()
